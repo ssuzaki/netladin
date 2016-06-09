@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="#202020"
+    android:orientation="vertical" >
+
+    <ImageView 
+        android:id="@+id/imageOnAir"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/onair_gray"
+        android:scaleType="fitCenter"
+        />
+    
+    <TextView 
+        android:id="@+id/textTime"
+        android:layout_width="fill_parent"
+        android:layout_height="16dp"
+		android:textColor="#FFFFFF"
+		android:text="放送時間 0:00:00  /  リスナ数 xxx  最大 xxx  延べ xxx"
+		android:layout_margin="4dp"
+        />
+    
+    <jp.codepanic.netladin.VisualizerView
+        android:id="@+id/visualizer"
+        android:background="#CDD00F"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="4dp"
+    	/>
+
+    <LinearLayout
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    
+        <TextView
+            android:id="@+id/textMicVolume" 
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/microphone"
+            android:layout_weight="1"
+            android:text="100%"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:gravity="center"
+            />
+        
+	    <SeekBar
+	        android:id="@+id/micVolume"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+            android:layout_weight="10"
+	        />
+	    
+	    <Button 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Mute"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="onClickMute"
+	        />
+
+	</LinearLayout>
+	
+    <LinearLayout 
+        android:background="@drawable/round"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        >
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+<!--            
+            <TextView 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="マウント名"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical|left"
+                android:textColor="#FFFFFF"
+                />
+-->
+			<Button 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="マウント名"
+                android:textSize="12dp"
+                android:clickable="true"
+                android:onClick="onClickMount"
+			    />
+			
+            <TextView 
+                android:id="@+id/textMount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="半角/で始まる英数字（番組識別用）"
+                android:textColor="#FFFFFF"
+                android:clickable="true"
+                android:onClick="onClickMount"
+                />
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+<!--             
+            <TextView 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="タイトル"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical|left"
+                android:textColor="#FFFFFF"
+                />
+-->            
+			<Button 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="タイトル"
+                android:textSize="12dp"
+                android:clickable="true"
+                android:onClick="onClickTitle"
+			    />            
+            
+            <TextView 
+                android:id="@+id/textTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="番組のタイトル"
+                android:textColor="#FFFFFF"
+                android:clickable="true"
+                android:onClick="onClickTitle"
+                />
+            
+        </LinearLayout>
+  
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+<!--             
+            <TextView 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="放送内容"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical|left"
+                android:textColor="#FFFFFF"
+                />
+-->            
+			<Button 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="放送内容"
+                android:textSize="12dp"
+                android:clickable="true"
+                android:onClick="onClickDesc"
+			    />    
+			                
+            <TextView 
+                android:id="@+id/textDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="○○で放送中"
+                android:hint="番組の説明"
+                android:textColor="#FFFFFF"
+                android:clickable="true"
+                android:onClick="onClickDesc"
+                />
+            
+        </LinearLayout>        
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+<!--             
+            <TextView 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="ジャンル"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical|left"
+                android:textColor="#FFFFFF"
+                />
+-->            
+			<Button 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="ジャンル"
+                android:textSize="12dp"
+                android:clickable="true"
+                android:onClick="onClickGnl"
+			    />    
+			                
+            <TextView 
+                android:id="@+id/textGnl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="番組のジャンル"
+                android:textColor="#FFFFFF"
+                android:clickable="true"
+                android:onClick="onClickGnl"
+                />
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+<!--              
+            <TextView 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="ＤＪ"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical|left"
+                android:textColor="#FFFFFF"
+                />
+-->            
+			<Button 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="ＤＪ"
+                android:textSize="12dp"
+                android:clickable="true"
+                android:onClick="onClickDJ"
+			    />   
+			                
+            <TextView 
+                android:id="@+id/textDJ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="放送者（あなた）の名前"
+                android:textColor="#FFFFFF"
+                android:clickable="true"
+                android:onClick="onClickDJ"
+                />
+            
+        </LinearLayout>        
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+<!--             
+            <TextView 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="関連URL"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical|left"
+                android:textColor="#FFFFFF"
+                />
+-->            
+			<Button 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="関連URL"
+                android:textSize="12dp"
+                android:clickable="true"
+                android:onClick="onClickURL"
+			    />  
+			                
+            <TextView 
+                android:id="@+id/textURL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="番組と関連する掲示板などのURL"
+                android:textColor="#FFFFFF"
+                android:clickable="true"
+                android:onClick="onClickURL"
+                />
+            
+        </LinearLayout>        
+
+    </LinearLayout>
+
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="16dp"
+        android:textSize="12dp"
+		android:textColor="#808080"
+		android:text="↑各項目をタップして入力のあと、放送開始！"
+        />
+    
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:layout_marginTop="8dp"
+        >
+        
+	    <Button 
+	        android:id="@+id/btnOnAir"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="放送開始"
+	        android:layout_gravity="center_horizontal"
+	        android:clickable="true"
+	        android:onClick="onClickOnAir"
+	        android:layout_weight="1"
+	        />
+	
+	    <Button 
+	        android:id="@+id/btnShare"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="番組シェア"
+	        android:layout_gravity="center_horizontal"
+	        android:clickable="true"
+	        android:onClick="onClickShare"
+	        android:layout_weight="1"
+	        />
+	    
+	</LinearLayout>    
+    
+</LinearLayout>
